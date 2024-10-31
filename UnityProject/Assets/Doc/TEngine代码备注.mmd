@@ -1,0 +1,35 @@
+﻿[Scia Reto](https://sciareto.org) mind map   
+> __version__=`1.1`,showJumps=`true`
+---
+
+# Root topic
+
+## PlayMode的切换
+
+### EditorResourceMode 拓展了ToolBar<br/>编辑器里面的PlayMode切换只会在编辑器生效
+
+### 打出真机包的模式用什么模式得在初始场景GameModule/Root/Resource切换
+
+## 项目里面模块的划分
+> leftSide=`true`
+
+
+### Module 基类，都继承自MonoBehavior
+
+### 一开始都挂在GameMode启动场景里面，<br/>这样的话这些模块的逻辑岂不是没办法热更？
+
+## 文件下载地址配置
+> leftSide=`true`
+
+
+### GetPackageVersionRequestURL 搜索
+
+### SettingsUtils\.CompleteDownLoadPath
+
+#### 根据是内网/外网/正式服返回不同的地址
+
+### 实际配置方式在TEngineSettings/Resource/Resources Area
+
+#### 直接改代码里面的值没有用
+
+#### 也可以直接搜项目里面TEngineGlobalSettings\.asset文件直接修改
