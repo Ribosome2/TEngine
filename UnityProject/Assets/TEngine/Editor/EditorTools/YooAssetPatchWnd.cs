@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using TEngine.Editor;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -61,10 +62,18 @@ public class YooAssetPatchWnd : EditorWindow
         }
         
         GUILayout.Space(20);
-        if (GUILayout.Button("运行Exe",GUILayout.Height(30)))
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("运行exe",GUILayout.Height(30)))
         {
-            RunExe();
+            string exePath = @"Builds\Windows\Release_Windows.exe";
+            RunExe(exePath);
         }
+        if (GUILayout.Button("运行HFS",GUILayout.Height(30)))
+        {
+            OpenFolderHelper.Execute("../Tools/HFS");
+            // RunExe("../Tools/HFS"); //这样没法运行，就先直接打开hfs所在目录了，点击运行
+        }
+        GUILayout.EndHorizontal();
     }
 
     private static void CopyBundlesToFolder(string bundleFolder, string targetFolder)
@@ -111,14 +120,15 @@ public class YooAssetPatchWnd : EditorWindow
         }
     }
 
-    private static void RunExe()
+    private static void RunExe(string exePath)
     {
+        if (!File.Exists(exePath))
+        {
+            Debug.LogError($"{exePath} not exist ");
+        }
         try
         {
-            // 定义可执行文件的路径
-            string exePath = @"Builds\Windows\Release_Windows.exe";
-
-            // 启动进程
+            Debug.Log("try start process :"+ exePath);
             Process.Start(exePath);
         }
         catch (Exception ex)

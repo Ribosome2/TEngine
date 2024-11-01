@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using PatchCode.UIFramework;
 using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
@@ -54,7 +55,9 @@ namespace GameLogic
         {
             await UniTask.Yield();
             // yield return YooAssets.LoadSceneAsync("scene_home");	
-            // yield return UniWindow.OpenWindowAsync<UIHomeWindow>("UIHome");
+            await GameModule.Scene.LoadScene("scene_home").ToUniTask();
+            // UIManager.Instance.OpenUI<>()
+            // await GameModule.UI.ShowUI<UIHomeWindow>("UIHome");
             //
             // // 释放资源
             // var package = YooAssets.GetPackage("DefaultPackage");
