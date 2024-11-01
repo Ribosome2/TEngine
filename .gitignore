@@ -16,3 +16,6 @@ UnityProject/ProjectSettings/BurstAotSettings_StandaloneWindows.json
 UnityProject/Release
 Tools/HFS/Default_0
 .idea
+UnityProject/package
+Tools/HFS/**~
+Tools/HFS/~temp.vfs
