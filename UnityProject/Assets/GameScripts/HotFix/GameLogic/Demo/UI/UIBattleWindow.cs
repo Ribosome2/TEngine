@@ -55,7 +55,7 @@ namespace GameLogic
         {
             await UniTask.Yield();
             // yield return YooAssets.LoadSceneAsync("scene_home");	
-            await GameModule.Scene.LoadScene("scene_home").ToUniTask();
+            await GameModule.Scene.LoadScene("SceneTest").ToUniTask();
             // UIManager.Instance.OpenUI<>()
             // await GameModule.UI.ShowUI<UIHomeWindow>("UIHome");
             //
