@@ -3,17 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Framework;
+using GameBase;
 using TEngine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YooAsset;
 
-namespace PatchCode.UIFramework
+namespace GameLogic
 {
     public class UIManager : Singleton<UIManager>
     {
-        public Dictionary<E_UILayer, Transform> uiRootMap = new Dictionary<E_UILayer, Transform>();
-        public Dictionary<Type, UIWindowBase> m_OpenUIs = new Dictionary<Type, UIWindowBase>();
-        public HashSet<Type> m_OpeningUI = new HashSet<Type>();
+        private Dictionary<E_UILayer, Transform> uiRootMap = new Dictionary<E_UILayer, Transform>();
+        private Dictionary<Type, UIWindowBase> m_OpenUIs = new Dictionary<Type, UIWindowBase>();
+        private HashSet<Type> m_OpeningUI = new HashSet<Type>();
 
         public void InitUI()
         {
@@ -25,6 +27,12 @@ namespace PatchCode.UIFramework
             uiRootMap[E_UILayer.Popup] = uiRoot.transform.Find("Popup");
             uiRootMap[E_UILayer.Scene] = uiRoot.transform.Find("Scene");
             uiRootMap[E_UILayer.MainUI] = uiRoot.transform.Find("MainUI");
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        {
+            CloseUIOnSwitchScene();
         }
 
         public async Task OpenUI<T, TA>(TA arg) where T : UIWindowBase
@@ -41,11 +49,6 @@ namespace PatchCode.UIFramework
             CreateWindowInstance<T>(go, uiType);
             var windowsInstance = CreateWindowInstance<T>(go, uiType);
             windowsInstance.OpenWithParam(arg);
-            // ResourceManager.Instance.LoadAssetASync<GameObject>(prefabPath, (go,assetHandle) =>
-            // {
-            //     var windowsInstance = CreateWindowInstance<T>(go, uiType,assetHandle);
-            //     windowsInstance.OpenWithParam(arg);
-            // });
         }
         
         public async Task OpenUI<T>() where T : UIWindowBase

@@ -1,4 +1,4 @@
-﻿namespace PatchCode.UIFramework
+﻿namespace GameLogic
 {
     public interface IDisposableUI
     {

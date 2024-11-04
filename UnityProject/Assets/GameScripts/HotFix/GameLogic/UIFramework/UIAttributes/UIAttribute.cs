@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PatchCode.UIFramework
+namespace GameLogic
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class UIAttribute : Attribute

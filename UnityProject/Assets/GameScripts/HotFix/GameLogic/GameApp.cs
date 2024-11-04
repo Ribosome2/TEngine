@@ -39,7 +39,9 @@ public partial class GameApp:Singleton<GameApp>
     /// </summary>
     private void StartGameLogic()
     {
-        StartBattleRoom().Forget();
+        // StartBattleRoom().Forget();
+        UIManager.Instance.InitUI();
+        UIManager.Instance.OpenUI<UIMainCity>();
     }
 
     private async UniTaskVoid StartBattleRoom()

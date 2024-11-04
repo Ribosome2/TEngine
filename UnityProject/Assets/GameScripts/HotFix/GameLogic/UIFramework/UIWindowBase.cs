@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PatchCode.UIFramework
+namespace GameLogic
 {
     public abstract class UIWindowBase:UIViewBase
     {

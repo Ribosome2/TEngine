@@ -5,7 +5,7 @@ using Framework;
 using UnityEngine;
 using YooAsset;
 
-namespace PatchCode.UIFramework
+namespace GameLogic
 {
     public class  UICellContainer<T>:IDisposableUI where T:UICellViewBase
     {

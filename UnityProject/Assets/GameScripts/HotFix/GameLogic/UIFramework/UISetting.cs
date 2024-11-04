@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PatchCode.UIFramework
+namespace GameLogic
 {
     public class UISetting
     {

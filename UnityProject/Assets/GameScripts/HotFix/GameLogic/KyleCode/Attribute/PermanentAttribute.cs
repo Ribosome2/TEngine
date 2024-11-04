@@ -1,6 +1,6 @@
 using System;
 
-namespace PatchCode
+namespace GameLogic
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class PermanentAttribute  : Attribute

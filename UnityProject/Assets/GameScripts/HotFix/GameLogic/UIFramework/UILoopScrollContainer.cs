@@ -5,7 +5,7 @@
 // using UnityEngine.UI;
 // using YooAsset;
 //
-// namespace PatchCode.UIFramework
+// namespace GameLogic
 // {
 //     public class UILoopScrollContainer<T> : IDisposableUI,LoopScrollPrefabSource, LoopScrollDataSource where T:UICellViewBase
 //     {

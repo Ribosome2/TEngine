@@ -31,7 +31,7 @@ public class KyleUICodeGenWnd : EditorWindow
             {
                 return bindComp.ViewScripts;
             }
-            var folderPath =$"Assets/HotUpdate/GameLogic/GameUICode/{m_codeGenContext.FolderName}";
+            var folderPath =$"Assets/GameScripts/GameLogic/GameUICode/{m_codeGenContext.FolderName}";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
@@ -132,9 +132,8 @@ public class KyleUICodeGenWnd : EditorWindow
 
         string windowCodeTemplate =
 @"using UnityEngine;
-using PatchCode.UIFramework;
 
-namespace PatchCode
+namespace GameLogic
 {
 	[UI(""ASSET_PATH"")]
 	public class UIName: UIWindowBase
@@ -177,9 +176,8 @@ namespace PatchCode
 
         string windowCodeTemplate =
             @"using UnityEngine;
-using PatchCode.UIFramework;
 
-namespace PatchCode
+namespace GameLogic
 {
 	[UI(""ASSET_PATH"")]
 	public class UIName: UICellViewBase
