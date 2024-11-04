@@ -48,9 +48,17 @@ public class YooAssetPatchWnd : EditorWindow
             var targetFolder = patchServerFolder;
             CopyBundlesToFolder(bundleFolder, targetFolder);
         }
+        if (GUILayout.Button("复制到HFS目录",GUILayout.Height(50)))
+        {
+            var targetFolder = @"../Tools\HFS\Default_0\"+SettingsUtils.GetPlatformName();
+            EnsureDirectoryExists(targetFolder);
+            CopyBundlesToFolder(bundleFolder, targetFolder);
+        }
+        
         if (GUILayout.Button("CopyBundlesToStreaming",GUILayout.Height(50)))
         {
             var targetFolder = "Assets/StreamingAssets/package/DefaultPackage";
+            EnsureDirectoryExists(targetFolder);
             ClearFolder(targetFolder);
             CopyBundlesToFolder(bundleFolder, targetFolder);
         }
@@ -147,7 +155,24 @@ public class YooAssetPatchWnd : EditorWindow
         CopyMetaDll(buildTargetName, "System.Core");
         AssetDatabase.Refresh();
     }
+    public static void EnsureDirectoryExists(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            throw new ArgumentException("Path cannot be null or empty.", nameof(path));
+        }
 
+        // 如果目录不存在，则创建它
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+            Console.WriteLine($"Directory '{path}' has been created.");
+        }
+        else
+        {
+            Console.WriteLine($"Directory '{path}' already exists.");
+        }
+    }
     static void CopyMetaDll(string buildTargetName,string dllName)
     {
         File.Copy($"HybridCLRData/AssembliesPostIl2CppStrip/{buildTargetName}/{dllName}.dll",$"Assets/PatchGameRes/Code/{dllName}.dll.bytes",true);
