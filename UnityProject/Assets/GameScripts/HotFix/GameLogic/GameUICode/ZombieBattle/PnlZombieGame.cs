@@ -1,3 +1,4 @@
+using TEngine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,7 @@ namespace GameLogic
         private void OnClickQuit()
         {
 	        // SceneMgr.Instance.GoToScene(GameSceneTypes.MainCity);
+	        GameModule.Scene.LoadScene("SceneTest");
         }
 
         protected override void OnCreate()
