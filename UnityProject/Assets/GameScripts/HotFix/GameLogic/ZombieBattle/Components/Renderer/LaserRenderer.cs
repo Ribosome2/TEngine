@@ -41,7 +41,7 @@ namespace GameLogic
 
         private async Task InitView(DirectionalLaserComponent laserComp)
         {
-            viewGo = await GameModule.Resource.LoadGameObjectAsync("Assets/PatchGameRes/Prefabs/LaserNoControl.prefab");
+            viewGo = await GameModule.Resource.LoadGameObjectAsync("Assets/AssetRaw/ZombieGameDemo/Prefabs/LaserNoControl.prefab");
             mLineRenderer = viewGo.GetComponent<LineRenderer>();
             UpdateLaser(laserComp);
         }

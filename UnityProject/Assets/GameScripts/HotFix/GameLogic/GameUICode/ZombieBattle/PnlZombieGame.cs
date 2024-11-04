@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace GameLogic
 {
-	[UI("Assets/PatchGameRes/UI/ZombieBattle/PnlZombieGame.prefab")]
+	[UI("Assets/AssetRaw/ZombieGameDemo/UI/ZombieBattle/PnlZombieGame.prefab")]
 	public class PnlZombieGame: UIWindowBase
 	{
 		#region 节点定义

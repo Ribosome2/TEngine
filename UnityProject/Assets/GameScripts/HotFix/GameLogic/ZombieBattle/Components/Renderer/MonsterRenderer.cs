@@ -21,7 +21,7 @@ namespace GameLogic
 
         private async Task InitView()
         {
-            viewGo=await GameModule.Resource.LoadGameObjectAsync("Assets/PatchGameRes/Prefabs/Zombie1.prefab");
+            viewGo=await GameModule.Resource.LoadGameObjectAsync("Assets/AssetRaw/ZombieGameDemo/Prefabs/Zombie1.prefab");
             viewTrans = viewGo.transform;
             mSpriteRender = viewGo.GetComponentInChildren<SpriteRenderer>();
         }

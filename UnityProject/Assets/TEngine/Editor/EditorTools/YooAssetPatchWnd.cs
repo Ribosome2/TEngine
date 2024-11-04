@@ -87,33 +87,42 @@ public class YooAssetPatchWnd : EditorWindow
     private static void CopyBundlesToFolder(string bundleFolder, string targetFolder)
     {
         var dirs = Directory.GetDirectories(bundleFolder);
-        // 使用 LINQ 对目录路径按字母顺序降序排序(版本号大的会在前面）
-        var sortedDirs = dirs.OrderByDescending(dir => dir);
-        bool found=false;
-        foreach (string dir in sortedDirs)
+        var targetDir = string.Empty;
+        long maxNum = -1;
+        foreach (string dir in dirs)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(dir);
             //bundle生成目录格式：“2024-06-18-1003”
             if (Regex.Match(directoryInfo.Name, "[\\d_]+").Success)
             {
-                found = true;
-                // CopyHotUpdateCodes();
                 Debug.Log("找到生成目录"+directoryInfo.FullName);
-                var allFiles = Directory.GetFiles(dir);
-                int count=0;
-                foreach (string filePath in allFiles)
+
+                var folderToNum = long.Parse(directoryInfo.Name.Replace("-", ""));
+                if (folderToNum > maxNum)
                 {
-                    var fileInfo = new FileInfo(filePath);
-                    var newPath = Path.Combine(targetFolder, fileInfo.Name);
-                    File.Copy(filePath,newPath,true);
-                    count++;
+                    maxNum = folderToNum;
+                    targetDir = dir;
                 }
-                Debug.Log($"复制了 {count} 个文件到 {targetFolder}");
-                break;
             }
         }
+        
 
-        if (found == false)
+        if (string.IsNullOrEmpty(targetDir) == false)
+        {
+            Debug.Log("找到Bundle目录:"+targetDir);
+
+            var allFiles = Directory.GetFiles(targetDir);
+            int count=0;
+            foreach (string filePath in allFiles)
+            {
+                var fileInfo = new FileInfo(filePath);
+                var newPath = Path.Combine(targetFolder, fileInfo.Name);
+                File.Copy(filePath,newPath,true);
+                count++;
+            }
+            Debug.Log($"复制了 {count} 个文件到 {targetFolder}");
+        }
+        else
         {
             Debug.Log("没有找到目标目录： "+ bundleFolder);
         }

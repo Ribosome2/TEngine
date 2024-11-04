@@ -20,7 +20,7 @@ namespace GameLogic
 
         private async void  OnClickZombie()
         {
-	        await GameModule.Scene.LoadScene("SceneTest").ToUniTask();
+	        await GameModule.Scene.LoadScene("ZombieGame").ToUniTask();
         }
 	}
 }

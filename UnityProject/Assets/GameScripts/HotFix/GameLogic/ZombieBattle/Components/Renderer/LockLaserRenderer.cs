@@ -42,7 +42,7 @@ namespace GameLogic
 
         async Task InitView(LockLaserComponent laserComp)
         {
-            viewGo= await GameModule.Resource.LoadGameObjectAsync("Assets/PatchGameRes/Prefabs/LockLaser.prefab");
+            viewGo= await GameModule.Resource.LoadGameObjectAsync("Assets/AssetRaw/ZombieGameDemo/Prefabs/LockLaser.prefab");
             mLineRenderer = viewGo.GetComponent<LineRenderer>();
             hitFlashTran = viewGo.transform.Find("HitFlash");
             UpdateLaser(laserComp);
