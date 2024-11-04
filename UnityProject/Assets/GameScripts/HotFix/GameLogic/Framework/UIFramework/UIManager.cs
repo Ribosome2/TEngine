@@ -17,7 +17,7 @@ namespace GameLogic
         private Dictionary<Type, UIWindowBase> m_OpenUIs = new Dictionary<Type, UIWindowBase>();
         private HashSet<Type> m_OpeningUI = new HashSet<Type>();
 
-        public void InitUI()
+        public UIManager()
         {
             GameObject uiRoot = GameObject.Find("UICanvas");
             uiRoot.SetActive(true);
@@ -61,19 +61,15 @@ namespace GameLogic
 
             var prefabPath = UISetting.GetUIPath<T>();
             m_OpeningUI.Add(uiType);
-            var go =await GameModule.Resource.LoadAssetAsync<GameObject>(prefabPath);
-            CreateWindowInstance<T>(go, uiType);
-            // GameModule.Resource.LoadAssetAsync<GameObject>(prefabPath, (go,assetHandle) =>
-            // {
-            //     CreateWindowInstance<T>(go, uiType,assetHandle);
-            // });
-        }
-
-        private UIWindowBase CreateWindowInstance<T>(GameObject go, Type uiType) where T : UIWindowBase
-        {
             var layer = UISetting.GetUILayer<T>();
             var parent = uiRootMap[layer];
-            var uiGo = GameObject.Instantiate(go, parent);
+            var go =await GameModule.Resource.LoadGameObjectAsync(prefabPath,default,"",parent);
+            CreateWindowInstance<T>(go, uiType);
+
+        }
+
+        private UIWindowBase CreateWindowInstance<T>(GameObject uiGo, Type uiType) where T : UIWindowBase
+        {
             var windowsInstance = Activator.CreateInstance<T>();
             windowsInstance.InitView(uiGo);
             m_OpenUIs.Add(uiType, windowsInstance);

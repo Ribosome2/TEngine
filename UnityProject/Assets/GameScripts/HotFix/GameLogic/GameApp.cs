@@ -40,7 +40,7 @@ public partial class GameApp:Singleton<GameApp>
     private void StartGameLogic()
     {
         // StartBattleRoom().Forget();
-        UIManager.Instance.InitUI();
+        SceneMgr.Init();
         UIManager.Instance.OpenUI<UIMainCity>();
     }
 
