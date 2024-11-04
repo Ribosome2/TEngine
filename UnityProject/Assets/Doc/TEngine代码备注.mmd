@@ -33,3 +33,23 @@
 #### 直接改代码里面的值没有用
 
 #### 也可以直接搜项目里面TEngineGlobalSettings\.asset文件直接修改
+
+## 资源管理模块
+
+### 异步加载对象：LoadGameObjectAsync
+
+#### 不要直接用Unity的Instantiate <br/>用 AssetsReference\.Instantiate
+
+### 资源引用计数
+
+#### 通过AssetReference脚本挂着GameObject上面，<br/>OnDestroy的时候释放对应资源
+
+##### \_sourceGameObject 记录引用源GameObject
+
+##### \_refAssetInfoList 记录其他类型
+
+###### AssetsSetHelper 封装要动态加载资源的操作
+
+### 对象池模块
+
+#### 回收到对象池的对象挂在PoolManager节点下面
