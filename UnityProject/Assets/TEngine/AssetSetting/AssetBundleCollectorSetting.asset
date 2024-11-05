@@ -175,3 +175,16 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+    - GroupName: ZombieGame
+      GroupDesc: "\u6253\u50F5\u5C38demo"
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/AssetRaw/ZombieGameDemo
+        CollectorGUID: 4cc580c234d4ddc45ada3bbed2aa88dd
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

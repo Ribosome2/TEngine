@@ -14,3 +14,4 @@ Tools/FileServer/AssetRoot
 UnityProject/ProjectSettings/CommonBurstAotSettings.json
 UnityProject/ProjectSettings/BurstAotSettings_StandaloneWindows.json
 Tools/HFS/Default_0
+UnityProject/Assets/StreamingAssets.meta
