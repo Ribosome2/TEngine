@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Skin: {fileID: 11400000, guid: b38f904eb09e4bd48a46a63750942109, type: 2}
-  m_ActiveWindow: 1
+  m_ActiveWindow: 0
   m_ShowFullWindow: 0
   m_ConsoleWindow:
     m_LockScroll: 1
@@ -909,7 +909,7 @@ MonoBehaviour:
   m_MaxUnloadUnusedAssetsInterval: 300
   m_UseSystemUnloadUnusedAssets: 1
   packageName: DefaultPackage
-  playMode: 1
+  playMode: 2
   m_UpdatableWhilePlaying: 0
   VerifyLevel: 1
   m_ReadWritePathType: 0
