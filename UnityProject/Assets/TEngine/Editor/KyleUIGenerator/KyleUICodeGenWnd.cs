@@ -31,7 +31,7 @@ public class KyleUICodeGenWnd : EditorWindow
             {
                 return bindComp.ViewScripts;
             }
-            var folderPath =$"Assets/GameScripts/GameLogic/GameUICode/{m_codeGenContext.FolderName}";
+            var folderPath =$"Assets/GameScripts/HotFix/GameLogic/GameUICode/{m_codeGenContext.FolderName}";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);

@@ -74,6 +74,12 @@
 - LINK
 <pre>https://luban.doc.code-philosophy.com/docs/beginner/quickstart</pre>
 
+### ConfigSystem
+
+#### ConfigSystem\.Instance\.Tables\.xxx 这样get <br/>没有初始化的情况下就会去加载配置
+
+#### 要生成哪些表，需要在\_\_tables\_\_\.xlsx 目录里面加上配置<br/>这个设计其实不太好，容易造成冲突，为什么不直接配在表头里面？
+
 ## 代码热更
 
 ### 得开启ENABLE\_HYBRIDCLR 宏
