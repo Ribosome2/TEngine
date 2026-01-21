@@ -62,7 +62,10 @@ MonoBehaviour:
     - Key: m_btnBackToMainCity
       Value: {fileID: 7232972021376090188}
     keyCollision: 0
-  ViewScripts: Assets/HotUpdate/GameLogic/GameUICode/MainUI/PnlSnakeGameInfo.cs
+  widgetWraps:
+    list: []
+    keyCollision: 0
+  ViewCode: 
 --- !u!1 &5768052963530695866
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +77,6 @@ GameObject:
   - component: {fileID: 4328264168321335328}
   - component: {fileID: 543101271829747909}
   - component: {fileID: 357614144487885269}
-  - component: {fileID: 4342588105606357026}
   m_Layer: 5
   m_Name: VersionInfo
   m_TagString: Untagged
@@ -143,20 +145,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Version
---- !u!114 &4342588105606357026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5768052963530695866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb6444a81e2a674291add6be8603860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefix: "\u4E8F\u70B9\u5361"
-  versionInfoText: {fileID: 357614144487885269}
 --- !u!1 &7206360788766632822
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +356,6 @@ GameObject:
   - component: {fileID: 2545344935113967937}
   - component: {fileID: 3625612988203729764}
   - component: {fileID: 1911338492657706731}
-  - component: {fileID: 5196674589596225605}
   m_Layer: 5
   m_Name: m_testDesc
   m_TagString: Untagged
@@ -437,20 +424,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Test
---- !u!114 &5196674589596225605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7735262909048936340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 093be7e74b7041e4699bfcba5eb2181f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefix: "\u5927\u53E3\u5927\u53E3\u7684"
-  testText: {fileID: 1911338492657706731}
 --- !u!1 &8227298380606709924
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +435,6 @@ GameObject:
   - component: {fileID: 7343809086748767904}
   - component: {fileID: 1343933765969653459}
   - component: {fileID: 8359125372760947498}
-  - component: {fileID: 5348905842814533284}
   m_Layer: 5
   m_Name: m_txtVersion
   m_TagString: Untagged
@@ -531,20 +503,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Mono2
---- !u!114 &5348905842814533284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8227298380606709924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 093be7e74b7041e4699bfcba5eb2181f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefix: "\u5927\u53E3\u5927\u53E3\u7684"
-  testText: {fileID: 8359125372760947498}
 --- !u!1 &8868189682644456775
 GameObject:
   m_ObjectHideFlags: 0

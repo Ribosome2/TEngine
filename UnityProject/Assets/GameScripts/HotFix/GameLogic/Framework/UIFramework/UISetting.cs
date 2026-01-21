@@ -9,7 +9,7 @@ namespace GameLogic
         public static string GetUIPath<T>() where T:UIViewBase
         {
             var type = typeof(T);
-            GetUIAttribute<T>(type);
+            CheckInitUIAttribute(type);
             return s_uiPrefabPathMap[type].PrefabPath;
         }
         
@@ -18,14 +18,33 @@ namespace GameLogic
         public static E_UILayer GetUILayer<T>() where T:UIViewBase
         {
             var type = typeof(T);
-            GetUIAttribute<T>(type);
+            CheckInitUIAttribute(type);
             return s_uiPrefabPathMap[type].Layer;
         }
         
-
-        private static void GetUIAttribute<T>(Type type) where T : UIViewBase
+        public static E_UIBackgroundType GetUIBackgroundType<T>() where T:UIViewBase
         {
-            if (!s_uiPrefabPathMap.TryGetValue(type, out UIAttribute uiAttribute))
+            var type = typeof(T);
+            CheckInitUIAttribute(type);
+            return s_uiPrefabPathMap[type].BackgroundType;
+        }
+        
+        public static bool GetIsUnloadOnSwitchScene<T>() where T:UIViewBase
+        {
+            var type = typeof(T);
+            CheckInitUIAttribute(type);
+            return s_uiPrefabPathMap[type].SwitchSceneClose;
+        }
+
+        public static bool GetIsUnloadOnSwitchScene(Type type)
+        {
+            CheckInitUIAttribute(type);
+            return s_uiPrefabPathMap[type].SwitchSceneClose;
+        }
+
+        private static void CheckInitUIAttribute(Type type)
+        {
+            if (!s_uiPrefabPathMap.ContainsKey(type))
             {
                 var attribute = type.GetCustomAttributes(typeof(UIAttribute), false);
                 if (attribute.Length > 0)

@@ -1,15 +1,19 @@
 ﻿using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using TEngine;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class BindObjectMono : MonoBehaviour
 {
     public GenericDictionary<string, GameObject> objDict;
+    public GenericDictionary<string, WidgetWrap> widgetWraps;
 
 #if UNITY_EDITOR
 
-    public string ViewScripts ;
+   public string ViewCode ;
 
     public void BindObject(bool includeInactive)
     {
@@ -75,6 +79,23 @@ public class BindObjectMono : MonoBehaviour
         if (objDict.TryGetValue(objName, out var obj))
         {
             return obj;
+        }
+
+        return null;
+    }
+    
+    public WidgetWrap GetWidgetWrap(string objName)
+    {
+        if (widgetWraps.TryGetValue(objName, out var widgetWrap))
+        {
+            return widgetWrap;
+        }
+        
+        if (objDict.TryGetValue(objName, out var obj))
+        {
+            var wrap=new WidgetWrap(obj);
+            widgetWraps[objName] = wrap;
+            return wrap;
         }
 
         return null;

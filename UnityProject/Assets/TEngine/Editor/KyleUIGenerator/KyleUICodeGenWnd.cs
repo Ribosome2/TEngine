@@ -27,11 +27,11 @@ public class KyleUICodeGenWnd : EditorWindow
         public string GetCodePath()
         {
             var bindComp = uiRoot.GetComponent<BindObjectMono>();
-            if(bindComp!=null && !string.IsNullOrEmpty(bindComp.ViewScripts))
+            if(bindComp!=null && !string.IsNullOrEmpty(bindComp.ViewCode))
             {
-                return bindComp.ViewScripts;
+                return bindComp.ViewCode;
             }
-            var folderPath =$"Assets/GameScripts/HotFix/GameLogic/GameUICode/{m_codeGenContext.FolderName}";
+            var folderPath =$"Assets/GameScripts/HotFix/GameLogic/BlockGame/UICode/{m_codeGenContext.FolderName}";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
@@ -73,7 +73,7 @@ public class KyleUICodeGenWnd : EditorWindow
         GUILayout.EndHorizontal();
     }
 
-    private static void Generate(GameObject selectGo,bool isCell)
+    public static void Generate(GameObject selectGo,bool isCell)
     {
         
         var prefabGo = PrefabUtility.GetNearestPrefabInstanceRoot(selectGo);
@@ -223,9 +223,9 @@ namespace GameLogic
         if (referenceCollector == null)
             return;
 
-        if (referenceCollector.ViewScripts!= m_codeGenContext.codePath)
+        if (referenceCollector.ViewCode!= m_codeGenContext.codePath)
         {
-            referenceCollector.ViewScripts = m_codeGenContext.codePath;
+            referenceCollector.ViewCode = m_codeGenContext.codePath;
             EditorUtility.SetDirty(referenceCollector);
             AssetDatabase.Refresh();
         }
@@ -247,8 +247,8 @@ namespace GameLogic
         code = temp;
     }
 
-    private const string FileGetTemplate = @"
-		protected GameObject RefKey {  get	{   return RefBind.GetGO(""RefKey"");	}}";
+    private const string FiledDefineTemplate = "\t\tprotected WidgetWrap RefKey ;\n";
+    private const string FiledInitTemplate = "\t\t\tRefKey = RefBind.GetWidgetWrap(\"RefKey\");\n";
     private static string GenerateField(ref GenericDictionary<string, GameObject> allGameObject)
     {
         string add = "";
@@ -256,9 +256,21 @@ namespace GameLogic
         {
             if (kv.Value != null)
             {
-                add += FileGetTemplate.Replace("RefKey", kv.Key);
+                add += FiledDefineTemplate.Replace("RefKey", kv.Key);
             }
         }
+
+        add += "\n";
+        add += "\t\tprotected override void InitWidgetBind()\n\t\t{\n";
+        foreach (var kv in allGameObject)
+        {
+            if (kv.Value != null)
+            {
+                add += FiledInitTemplate.Replace("RefKey", kv.Key);
+            }
+        }
+        add += "\t\t}";
+        
         return add;
     }
 
